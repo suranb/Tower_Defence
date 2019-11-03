@@ -65,6 +65,7 @@ public class Turret : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
+        // Gizmo for å se Ca hvor stor Range det er.
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
