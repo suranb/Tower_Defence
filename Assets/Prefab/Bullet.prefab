@@ -105,4 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7990dda1359cf4149a4b035bc696a73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
   speed: 70

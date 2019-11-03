@@ -2,6 +2,7 @@
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject particle;
     private Transform target;
     public float speed = 50f;
 
@@ -30,8 +31,10 @@ public class Bullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
     }
 
-    void HitTarget ()
+    void HitTarget()
     {
+        GameObject effectIns = (GameObject)Instantiate(particle, transform.position, transform.rotation);
+        Destroy(effectIns, 2f);
         // Kill enemy
         Destroy(target.gameObject);
         // Destroy bullet
