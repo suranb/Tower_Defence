@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-BuildManager buildManager;
+    BuildManager buildManager;
 
-    void Start() 
+    private void Start()
     {
         buildManager = BuildManager.instance;
     }
 
-    public void arrowTurret ()
+    public void PurchaseStandardTurret()
     {
         buildManager.SetTurretToBuild(buildManager.standardTurretPrefab);
     }
 
-    public void explosiveTurret ()
+    public void PurchaseAnotherTurret()
     {
-        buildManager.SetTurretToBuild(buildManager.explosiveTurretPrefab);
+        buildManager.SetTurretToBuild(buildManager.anotherTurretPrefab);
     }
 }

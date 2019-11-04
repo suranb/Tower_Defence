@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
+        // Henter første scene i build og går til neste så Scene 0 også 1 også 2 osv 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

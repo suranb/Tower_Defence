@@ -20,7 +20,6 @@ public class Turret : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
-
     // Finner alle objekter med tag Enemy. Sjekker hvilket enemy objekt som er nærmest. 
     void UpdateTarget()
     {
@@ -65,8 +64,10 @@ public class Turret : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
+        /*
         // Gizmo for å se Ca hvor stor Range det er.
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+        */
     }
 }
