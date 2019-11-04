@@ -5,7 +5,6 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
-    private GameObject turretToBuild;
 
     void Awake()
     {
@@ -19,13 +18,26 @@ public class BuildManager : MonoBehaviour
 
     public GameObject standardTurretPrefab;
     public GameObject anotherTurretPrefab;
+    private TurretBlueprint turretToBuild;
 
-    public GameObject GetTurretToBuild()
+    // Property Syntax 
+    public bool CanBuild { get { return turretToBuild != null; } }
+
+    public void BuildTurretOn(Node node)
     {
-        return turretToBuild;
-    }
+        if (PlayerStats.Money < turretToBuild.cost)
+        {
+            Debug.Log("Not enought Money to build");
+            return;
+        }
+        PlayerStats.Money -= turretToBuild.cost;
 
-    public void SetTurretToBuild (GameObject turret)
+        // node.GetBuildPosition()
+        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.transform.position + node.positionOffset, transform.rotation);
+        node.turret = turret;
+        Debug.Log("TurretBuild! Money left: " + PlayerStats.Money);
+    }
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
     }
