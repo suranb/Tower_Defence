@@ -18,10 +18,12 @@ public class BuildManager : MonoBehaviour
 
     public GameObject standardTurretPrefab;
     public GameObject anotherTurretPrefab;
+    public GameObject buildEffect;
     private TurretBlueprint turretToBuild;
 
     // Property Syntax 
     public bool CanBuild { get { return turretToBuild != null; } }
+    public bool hasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
 
     public void BuildTurretOn(Node node)
     {
@@ -35,6 +37,10 @@ public class BuildManager : MonoBehaviour
         // node.GetBuildPosition()
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.transform.position + node.positionOffset, transform.rotation);
         node.turret = turret;
+
+        GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), transform.rotation);
+        Destroy(effect, 1f);
+
         Debug.Log("TurretBuild! Money left: " + PlayerStats.Money);
     }
     public void SelectTurretToBuild(TurretBlueprint turret)

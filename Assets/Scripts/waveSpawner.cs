@@ -6,8 +6,8 @@ public class waveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
     public Transform spawn;
-    public float timeBetweenWaves = 5.5f;
-    private float countdown = 2f;
+    public float timeBetweenWaves = 20f;
+    private float countdown = 0f;
     public Text waveCountdownText;
     private int waveNumber;
 
@@ -20,8 +20,9 @@ public class waveSpawner : MonoBehaviour
         }
 
         countdown -= Time.deltaTime;
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+        waveCountdownText.text = string.Format("{0:00.00}", countdown);
 
-        waveCountdownText.text = Mathf.Round(countdown).ToString();
     }
     // IEnumerator lar oss fryse tiden så det ikke spawner dobbelte. venter halvt sekund før det kommer ny sapwn
     IEnumerator SpawnWave()
