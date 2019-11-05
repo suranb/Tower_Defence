@@ -32,7 +32,6 @@ public class waveSpawner : MonoBehaviour
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);
         }
-
         waveNumber++;
     }
 

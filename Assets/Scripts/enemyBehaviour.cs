@@ -11,9 +11,4 @@ public class enemyBehaviour : MonoBehaviour
     {
         GetComponent<NavMeshAgent>().destination = target.transform.position;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(target);
-    }
 }

@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     public GameObject particle;
     private Transform target;
     public float speed = 50f;
+    private int enemyWorth = 150;
 
     public void Seek(Transform _target)
     {
@@ -39,6 +40,9 @@ public class Bullet : MonoBehaviour
         Destroy(target.gameObject);
         // Destroy bullet
         Destroy(gameObject);
+
+        Debug.Log("+= 100");
+        PlayerStats.Money += enemyWorth;
     }
 }
 
