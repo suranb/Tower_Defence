@@ -39,4 +39,9 @@ public class waveSpawner : MonoBehaviour
     {
         Instantiate(enemyPrefab, spawn.position, spawn.rotation);
     }
+
+    void EndPath ()
+    {
+        
+    }
 }
