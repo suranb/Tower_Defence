@@ -1,29 +1,35 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class enemyBehaviour : MonoBehaviour
 {
-    [SerializeField] GameObject target;
+    // [SerializeField] GameObject target;
+    public float closeDistance = 10f;
 
-    public float closeDistance = 5f;
-
-    void Update() 
+    void Update()
     {
-        CheckCloseDistance();    
+        FindClosestBuilding();
+        GetComponent<NavMeshAgent>().destination = FindClosestBuilding().transform.position;
     }
-    public CheckCloseDistance()
-    {
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("Building");
 
-        for(int i = 0; i < taggedObjects.length; i++)
+    public GameObject FindClosestBuilding()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Building");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+
+        foreach (GameObject go in gos)
         {
-            if(Vector3.Distance(a.transform.position, taggedObjects[i].transform.position) <= closeDistance)
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
             {
-                //This is within your close distance so do whatever close 
-                //logic here
-                GetComponent<NavMeshAgent>().destination = target.transform.position;        
+                closest = go;
+                distance = curDistance;
             }
         }
+        return closest;
     }
 }

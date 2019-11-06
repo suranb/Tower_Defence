@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4000475804588975802}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,4 +220,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05553339df9e2aa45a02fbbce56a4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 3297608859601322145, guid: 7753831a1bbe34b4d9e2b507a28e0e12, type: 3}
+  closeDistance: 5
