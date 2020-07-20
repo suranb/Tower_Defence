@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 public class LivesUI : MonoBehaviour
 {
-
     public Text livesText;
 
 

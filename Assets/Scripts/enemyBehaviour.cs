@@ -3,33 +3,38 @@ using UnityEngine.AI;
 
 public class enemyBehaviour : MonoBehaviour
 {
-    // [SerializeField] GameObject target;
-    public float closeDistance = 10f;
+    public float speed = 10f;
+
+    private Transform target;
+    private int wavepointIndex = 0;
+
+    void Start()
+    {
+        target = Waypoints.points[0];
+    }
 
     void Update()
     {
-        FindClosestBuilding();
-        GetComponent<NavMeshAgent>().destination = FindClosestBuilding().transform.position;
-    }
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-    public GameObject FindClosestBuilding()
-    {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Building");
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-
-        foreach (GameObject go in gos)
+        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
+            GetNextWaypoint();
         }
-        return closest;
+
+        void GetNextWaypoint()
+        {
+            if(wavepointIndex >= Waypoints.points.Length - 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            wavepointIndex++;
+            target = Waypoints.points[wavepointIndex];
+
+        }
     }
+
 }
