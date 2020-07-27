@@ -13,6 +13,7 @@ public class Node : MonoBehaviour
     private Color startColor;
     public Color notEnoughMoneyColor;
     BuildManager buildManager;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -20,7 +21,6 @@ public class Node : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    // Vi kan kalle dette i BUildManager
     public Vector3 GetBuildPosition()
     {
         return transform.position + positionOffset;

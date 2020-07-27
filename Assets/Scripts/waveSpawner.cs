@@ -10,7 +10,7 @@ public class waveSpawner : MonoBehaviour
     private float countdown = 0f;
     public Text waveCountdownText;
     private int waveNumber;
-    
+
     private void Update()
     {
         if (countdown <= 0f)
@@ -40,8 +40,8 @@ public class waveSpawner : MonoBehaviour
         Instantiate(enemyPrefab, spawn.position, spawn.rotation);
     }
 
-    void EndPath ()
+    void EndPath()
     {
-        
+
     }
 }
